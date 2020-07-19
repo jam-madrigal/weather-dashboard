@@ -11,6 +11,8 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- Ajax -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- CSS -->
@@ -31,7 +33,7 @@
 <!-- Where the weather forecast will go -->
 <div class="card" id="forecastDiv">
     <div class="card-body">
-      <h1>Weather for today</h1>
+      <h1 id="dayName">Weather for today</h1>
       <br>
       <p id="todayTemp">today's temp</p>
       <p id="todayHumid">today's humidity</p>
@@ -43,9 +45,10 @@
 
 <!-- Five day forecast -->
     <div class="col-md-8" id="fiveDayDiv">
+        <h3>5 Day Forecast</h3>
         <div class="card" id="fiveDay">
             <div class="card-body">
-              <h4>nextdaydate</h4>
+              <h4 id="day1">nextdaydate</h4>
               <br>
               <p id="icon1">icongoeshere</p>
               <p id="temp1">temp</p>
@@ -55,7 +58,7 @@
 
         <div class="card" id="fiveDay">
             <div class="card-body">
-              <h4>nextdaydate</h4>
+              <h4 id="day2">nextdaydate</h4>
               <br>
               <p id="icon2">icongoeshere</p>
               <p id="temp2">temp</p>
@@ -65,7 +68,7 @@
 
         <div class="card" id="fiveDay">
             <div class="card-body">
-              <h4>nextdaydate</h4>
+              <h4 id="day3">nextdaydate</h4>
               <br>
               <p id="icon3">icongoeshere</p>
               <p id="temp3">temp</p>
@@ -75,7 +78,7 @@
 
         <div class="card" id="fiveDay">
             <div class="card-body">
-              <h4>nextdaydate</h4>
+              <h4 id="day4">nextdaydate</h4>
               <br>
               <p id="icon4">icongoeshere</p>
               <p id="temp4">temp</p>
@@ -85,7 +88,7 @@
 
         <div class="card" id="fiveDay">
             <div class="card-body">
-              <h4>nextdaydate</h4>
+              <h4 id="day5">nextdaydate</h4>
               <br>
               <p id="icon5">icongoeshere</p>
               <p id="temp5">temp</p>
