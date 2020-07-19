@@ -29,8 +29,21 @@ $("#cityButton").on("click", function(){
         let tempConvert = (response.main.temp-273.15)*1.8+32;
         let todayTemp = tempConvert.toFixed(1);
 
-        // Setting the text of the current day forecast divs based on the response
+        // Setting the text/icon of the current day forecast divs based on the response
         $("#dayName").text(response.name);
+
+        if (response.weather[0].main === "Clouds") {
+            $("#todayIcon").attr("Class", "fa fa-cloud");
+        };
+
+        if (response.weather[0].main === "Clear") {
+            $("#todayIcon").attr("Class", "fa fa-sun-o");
+        };
+
+        if (response.weather[0].main === "Rain") {
+            $("#todayIcon").attr("Class", "fa fa-tint");
+        };     
+        
         $("#todayTemp").text(todayTemp + " " + "°F");
         $("#todayHumid").text("Humidity:" + " " + response.main.humidity+"%");
         $("#todayWind").text("Wind Speed:" + " " + response.wind.speed + " " + "MPH");
