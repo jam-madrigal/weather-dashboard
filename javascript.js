@@ -236,6 +236,8 @@ function repeatLast() {
     $("#cityButton").trigger("click");
 }
 
-repeatLast();
+if (localStorage.lastSearch != null) {
+    repeatLast();
+}
 
 })
