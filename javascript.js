@@ -1,7 +1,13 @@
 $(document).ready(function(){
     
 // Storing the user's city input on button click and console logging the response from an ajax call based on that input
-$("#cityButton").on("click", function(){
+$("#userCity").on("keypress", function(e) {
+    if (e.which == 13) {
+        $("#cityButton").trigger("click");
+    }
+});
+
+$("#cityButton").on("click", function getWeather(){
     // Variable to store user input city
     var userCity = $("#userCity").val();
     // Variable to hold the url for the current day forecast
@@ -77,7 +83,7 @@ $("#cityButton").on("click", function(){
         })
 
     })
-    
+
     // Calling the five day forecast
     $.ajax({
         url: fiveDay,
