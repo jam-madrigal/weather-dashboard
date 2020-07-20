@@ -16,14 +16,11 @@ $("#cityButton").on("click", function(){
         url: currentDay,
         method: "GET"
       }).then(function(response) {
-          console.log(response)
+          console.log(response);
 
         // Storing the coordinates of the city
         let cityLat = response.coord.lat;
         let cityLon = response.coord.lon;
-
-
-     
         
         // Converting temperature response for the current day from kelvin to Fahrenheit and removing extraneous decimals
         let tempConvert = (response.main.temp-273.15)*1.8+32;
@@ -55,8 +52,26 @@ $("#cityButton").on("click", function(){
             url: todayUV,
             method: "GET"
           }).then(function(uvResponse) {
-              console.log(uvResponse)
+              console.log(uvResponse);
               $("#todayUV").text("UV Index:" + " " + uvResponse.value);
+
+            // Color coding the UV index
+            if (uvResponse.value >= 8) {
+                $("#todayUV").attr("style", "background-color: red");
+            }
+
+            if (uvResponse.value > 5 && uvResponse.value < 8) {
+                $("#todayUV").attr("style", "background-color: orange");
+            }
+
+            if (uvResponse.value > 2 && uvResponse.value < 6) {
+                $("#todayUV").attr("style", "background-color: yellow");
+            }
+
+            if (uvResponse.value > -1 && uvResponse.value < 3) {
+                $("#todayUV").attr("style", "background-color: green");
+            }
+
         })
 
     })
@@ -66,7 +81,51 @@ $("#cityButton").on("click", function(){
         url: fiveDay,
         method: "GET"
       }).then(function(fiveResponse) {
-          console.log(fiveResponse)
+          console.log(fiveResponse);
+        // Converting the temp of the first day
+        let tempConvert1 = (fiveResponse.list[5].main.temp-273.15)*1.8+32;
+        let temp1 = tempConvert1.toFixed(1);
+        // Setting the daily forecast
+        $("#day1").text(fiveResponse.list[5].dt_txt);
+        // Icon for day 1
+        if (fiveResponse.list[5].weather[0].main === "Clouds") {
+            $("#icon1").attr("Class", "fa fa-cloud");
+        };
+    
+        if (fiveResponse.list[5].weather[0].main === "Clear") {
+            $("#icon1").attr("Class", "fa fa-sun-o");
+        };
+    
+        if (fiveResponse.list[5].weather[0].main === "Rain") {
+            $("#icon1").attr("Class", "fa fa-tint");
+        }; 
+        // Temp and humidity
+        $("#temp1").text(temp1 + " " + "°F");
+        $("#humid1").text("Humidity:" + " " + fiveResponse.list[5].main.humidity);
+
+        // Day 2
+        let tempConvert2 = (fiveResponse.list[13].main.temp-273.15)*1.8+32;
+        let temp2 = tempConvert2.toFixed(1);
+        // Setting the daily forecast
+        $("#day2").text(fiveResponse.list[13].dt_txt);
+        // Icon for day 2
+        if (fiveResponse.list[13].weather[0].main === "Clouds") {
+            $("#icon2").attr("Class", "fa fa-cloud");
+        };
+    
+        if (fiveResponse.list[13].weather[0].main === "Clear") {
+            $("#icon2").attr("Class", "fa fa-sun-o");
+        };
+    
+        if (fiveResponse.list[13].weather[0].main === "Rain") {
+            $("#icon2").attr("Class", "fa fa-tint");
+        }; 
+        // Temp and humidity
+        $("#temp2").text(temp2 + " " + "°F");
+        $("#humid2").text("Humidity:" + " " + fiveResponse.list[13].main.humidity);
+        
+
+
     })
 
 })
