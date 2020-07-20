@@ -1,6 +1,6 @@
 # Weather Dashboard
 ---
-A web application that will give you a 5 day forecast for any given city.
+A web application that will give you the current weather forecast, and a forecast of noon for the next five days of any given city.
 ---
 ## Features
 - Submit any city

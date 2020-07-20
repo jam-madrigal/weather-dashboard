@@ -123,8 +123,69 @@ $("#cityButton").on("click", function(){
         // Temp and humidity
         $("#temp2").text(temp2 + " " + "°F");
         $("#humid2").text("Humidity:" + " " + fiveResponse.list[13].main.humidity);
-        
 
+        // Day 3
+        let tempConvert3 = (fiveResponse.list[21].main.temp-273.15)*1.8+32;
+        let temp3 = tempConvert3.toFixed(1);
+        // Setting the daily forecast
+        $("#day3").text(fiveResponse.list[21].dt_txt);
+        // Icon for day 3
+        if (fiveResponse.list[21].weather[0].main === "Clouds") {
+            $("#icon3").attr("Class", "fa fa-cloud");
+        };
+    
+        if (fiveResponse.list[21].weather[0].main === "Clear") {
+            $("#icon3").attr("Class", "fa fa-sun-o");
+        };
+    
+        if (fiveResponse.list[21].weather[0].main === "Rain") {
+            $("#icon3").attr("Class", "fa fa-tint");
+        }; 
+        // Temp and humidity
+        $("#temp3").text(temp3 + " " + "°F");
+        $("#humid3").text("Humidity:" + " " + fiveResponse.list[21].main.humidity);
+        
+        // Day 4
+        let tempConvert4 = (fiveResponse.list[13].main.temp-273.15)*1.8+32;
+        let temp4 = tempConvert4.toFixed(1);
+        // Setting the daily forecast
+        $("#day4").text(fiveResponse.list[29].dt_txt);
+        // Icon for day 4
+        if (fiveResponse.list[29].weather[0].main === "Clouds") {
+            $("#icon4").attr("Class", "fa fa-cloud");
+        };
+    
+        if (fiveResponse.list[29].weather[0].main === "Clear") {
+            $("#icon4").attr("Class", "fa fa-sun-o");
+        };
+    
+        if (fiveResponse.list[29].weather[0].main === "Rain") {
+            $("#icon4").attr("Class", "fa fa-tint");
+        }; 
+        // Temp and humidity
+        $("#temp4").text(temp4 + " " + "°F");
+        $("#humid4").text("Humidity:" + " " + fiveResponse.list[29].main.humidity);
+
+        // Day 5
+        let tempConvert5 = (fiveResponse.list[37].main.temp-273.15)*1.8+32;
+        let temp5 = tempConvert5.toFixed(1);
+        // Setting the daily forecast
+        $("#day5").text(fiveResponse.list[37].dt_txt);
+        // Icon for day 5
+        if (fiveResponse.list[37].weather[0].main === "Clouds") {
+            $("#icon5").attr("Class", "fa fa-cloud");
+        };
+    
+        if (fiveResponse.list[37].weather[0].main === "Clear") {
+            $("#icon5").attr("Class", "fa fa-sun-o");
+        };
+    
+        if (fiveResponse.list[37].weather[0].main === "Rain") {
+            $("#icon5").attr("Class", "fa fa-tint");
+        }; 
+        // Temp and humidity
+        $("#temp5").text(temp5 + " " + "°F");
+        $("#humid5").text("Humidity:" + " " + fiveResponse.list[37].main.humidity);
 
     })
 
