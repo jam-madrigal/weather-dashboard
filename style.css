@@ -15,7 +15,7 @@ padding: 15px;
     height: 0;
 }
 
-#newBtn {
+.btn-secondary {
     margin-top: 5px;
 }
 

@@ -1,7 +1,12 @@
 $(document).ready(function(){
     
-// Storing the user's city input on button click and console logging the response from an ajax call based on that input
 
+// Making a variable in which to store searches that were already input
+var searchHistory = [];
+// A variable to hold numbered IDs for generated buttons
+var buttonIndex = 0;
+
+// Storing the user's city input on button click and console logging the response from an ajax call based on that input
 // Making the enter key run the same function aas clicking the city button
 $("#userCity").on("keypress", function(e) {
     if (e.which == 13) {
@@ -18,13 +23,17 @@ $("#cityButton").on("click", function getWeather(){
     var fiveDay = "https://api.openweathermap.org/data/2.5/forecast?q=" + userCity + "&appid=1e5b1e82033f913ca953c232c1749468";
 
     // Generating a button with the user's input, allowing quick calls back to previous weather lookups
-    if (userCity !== $("#newBtn").innerHTML) {
-    $("#btnGens").append("<button class='btn btn-secondary' id='newBtn'>" + userCity);
-    }
+        buttonIndex += 1;
+        console.log(buttonIndex);
+        $("#btnGens").append("<button class='btn btn-secondary' id='newBtn'>" + userCity);
+        $("#newBtn").attr("id", "newBtn" + buttonIndex);
+        
+        
     // Making the generated buttons function like running a search for their value
-    $("#newBtn").on("click" , function() {
+    $(".btn-secondary").on("click" , function() {
         $("#userCity").val(this.innerHTML);
         $("#cityButton").trigger("click");
+
     });
 
     // Locally store the user's input
