@@ -16,15 +16,18 @@ $("#userCity").on("keypress", function(e) {
 
 $("#cityButton").on("click", function getWeather(){
     // Variable to store user input city
-    var userCity = $("#userCity").val();
+    var userCity = $("#userCity").val().toLowerCase();
     // Variable to hold the url for the current day forecast
     var currentDay = "https://api.openweathermap.org/data/2.5/weather?q=" + userCity + "&appid=1e5b1e82033f913ca953c232c1749468";
     // Variable to hold the url for a 5 day forecast
     var fiveDay = "https://api.openweathermap.org/data/2.5/forecast?q=" + userCity + "&appid=1e5b1e82033f913ca953c232c1749468";
 
+    // Storing the current search into the array for use with the button generation conditionals
+    searchHistory.push(userCity);
+    console.log(searchHistory);
+
     // Generating a button with the user's input, allowing quick calls back to previous weather lookups
         buttonIndex += 1;
-        console.log(buttonIndex);
         $("#btnGens").append("<button class='btn btn-secondary' id='newBtn'>" + userCity);
         $("#newBtn").attr("id", "newBtn" + buttonIndex);
         
