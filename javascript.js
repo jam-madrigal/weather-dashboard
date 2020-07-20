@@ -1,5 +1,4 @@
 $(document).ready(function(){
-    
 
 // Making a variable in which to store searches that were already input
 var searchHistory = [];
@@ -23,10 +22,15 @@ $("#cityButton").on("click", function getWeather(){
     var fiveDay = "https://api.openweathermap.org/data/2.5/forecast?q=" + userCity + "&appid=1e5b1e82033f913ca953c232c1749468";
 
     // Storing the current search into the array for use with the button generation conditionals
-    searchHistory.push(userCity);
-    console.log(searchHistory);
 
-    // Generating a button with the user's input, allowing quick calls back to previous weather lookups
+    // Generating a button with the user's input, allowing quick calls back to previous weather lookups, only if the search history and therefore button don't already exist
+
+    var found = searchHistory.includes(userCity);
+
+    if (!found) {
+
+    // Increasing the button index by 1 so that duplicate IDs are not generated and adding the user input to the array if it doesn't already exist
+        searchHistory.push(userCity);
         buttonIndex += 1;
         $("#btnGens").append("<button class='btn btn-secondary' id='newBtn'>" + userCity);
         $("#newBtn").attr("id", "newBtn" + buttonIndex);
@@ -38,9 +42,10 @@ $("#cityButton").on("click", function getWeather(){
         $("#cityButton").trigger("click");
 
     });
+}
 
     // Locally store the user's input
-    
+    localStorage.setItem("lastSearch", userCity);
 
 // Start the ajax call using the user's city input and console logging the responses for current day and then five day forecasts
 
@@ -225,5 +230,12 @@ $("#cityButton").on("click", function getWeather(){
 
 })
 
+// A function that runs on page load automatically displaying the last search again
+function repeatLast() {
+    $("#userCity").val(localStorage.lastSearch);
+    $("#cityButton").trigger("click");
+}
+
+repeatLast();
 
 })
