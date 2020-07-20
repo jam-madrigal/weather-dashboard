@@ -53,6 +53,8 @@ $("#cityButton").on("click", function(){
             method: "GET"
           }).then(function(uvResponse) {
               console.log(uvResponse);
+            // Unhiding the UV button and displaying the UV index within
+              $("#todayUV").removeClass("hidden");
               $("#todayUV").text("UV Index:" + " " + uvResponse.value);
 
             // Color coding the UV index
