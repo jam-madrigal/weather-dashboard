@@ -18,7 +18,16 @@ $("#cityButton").on("click", function getWeather(){
     var fiveDay = "https://api.openweathermap.org/data/2.5/forecast?q=" + userCity + "&appid=1e5b1e82033f913ca953c232c1749468";
 
     // Generating a button with the user's input, allowing quick calls back to previous weather lookups
-    $("#btnGens").append("<button class='btn btn-secondary' id=newBtn>" + userCity);
+    if (userCity !== $("#newBtn").innerHTML) {
+    $("#btnGens").append("<button class='btn btn-secondary' id='newBtn'>" + userCity);
+    }
+    // Making the generated buttons function like running a search for their value
+    $("#newBtn").on("click" , function() {
+        $("#userCity").val(this.innerHTML);
+        $("#cityButton").trigger("click");
+    });
+
+    // Locally store the user's input
     
 
 // Start the ajax call using the user's city input and console logging the responses for current day and then five day forecasts
