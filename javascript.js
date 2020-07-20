@@ -1,6 +1,8 @@
 $(document).ready(function(){
     
 // Storing the user's city input on button click and console logging the response from an ajax call based on that input
+
+// Making the enter key run the same function aas clicking the city button
 $("#userCity").on("keypress", function(e) {
     if (e.which == 13) {
         $("#cityButton").trigger("click");
@@ -14,6 +16,9 @@ $("#cityButton").on("click", function getWeather(){
     var currentDay = "https://api.openweathermap.org/data/2.5/weather?q=" + userCity + "&appid=1e5b1e82033f913ca953c232c1749468";
     // Variable to hold the url for a 5 day forecast
     var fiveDay = "https://api.openweathermap.org/data/2.5/forecast?q=" + userCity + "&appid=1e5b1e82033f913ca953c232c1749468";
+
+    // Generating a button with the user's input, allowing quick calls back to previous weather lookups
+    $("#btnGens").append("<button class='btn btn-secondary' id=newBtn>" + userCity);
     
 
 // Start the ajax call using the user's city input and console logging the responses for current day and then five day forecasts
